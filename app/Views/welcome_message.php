@@ -220,9 +220,9 @@
 
     <div class="heroe">
 
-        <h1>Welcome Ervan <?= CodeIgniter\CodeIgniter::CI_VERSION ?></h1>
+        <h1>Ervan Chodry 2017051001 <?= CodeIgniter\CodeIgniter::CI_VERSION ?></h1>
 
-        <h2>The small framework with powerful features</h2>
+        <h2>2017051001</h2>
 
     </div>
 
