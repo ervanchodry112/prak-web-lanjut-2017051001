@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\UserModel;
 
 class UserController extends BaseController
 {
@@ -22,18 +23,51 @@ class UserController extends BaseController
         return view('profile', $data);
     }
 
-    public function create(){
-        return view('create_user');
-    }
+    public function create()
+    {
 
-    public function store(){
-        
-        $data = [
-            'nama' => $this->request->getVar('nama'),
-            'kelas' => $this->request->getVar('kelas'),
-            'npm' => $this->request->getVar('npm'),
+        $kelas = [
+            [
+                'id' => 1, //Sesuaikan dengan ID kelas pada Database
+                'nama_kelas' => 'A'
+            ],
+            [
+                'id' => 2,
+                'nama_kelas' => 'B'
+            ],
+            [
+                'id' => 3,
+                'nama_kelas' => 'C'
+            ],
+            [
+                'id' => 4,
+                'nama_kelas' => 'D'
+            ],
         ];
 
-        return view('profile', $data);
+        $data = [
+            'kelas' => $kelas,
+        ];
+
+        return view('create_user', $data);
     }
+
+public function store()
+{
+    $userModel = new UserModel();
+
+    $userModel->saveUser([
+        'nama' => $this->request->getVar('nama'),
+        'id_kelas' => $this->request->getVar('kelas'),
+        'npm' => $this->request->getVar('npm'),
+    ]);
+
+    $data = [
+        'nama' => $this->request->getVar('nama'),
+        'kelas' => $this->request->getVar('kelas'),
+        'npm' => $this->request->getVar('npm'),
+    ];
+
+    return view('profile', $data);
+}
 }
