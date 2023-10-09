@@ -34,7 +34,7 @@ class CreateKelasTable extends Migration
         ]);
 
         $this->forge->addKey('id', true, true);
-        $this->forge->createTable('kelas');
+        $this->forge->createTable('kelas', true);
     }
 
     public function down()
