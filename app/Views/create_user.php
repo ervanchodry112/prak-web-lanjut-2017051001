@@ -2,11 +2,19 @@
 
 <?= $this->section('content') ?>
 <div class="container-fluid" style="height: 100vh; background-color: #9D76C1;">
-   <form class="container" action="<?= base_url('/user/store') ?>" method="POST">
+   <form class="container" action="<?= base_url('/user/store') ?>" method="POST" enctype="multipart/form-data">
       <div class="pt-5">
          <h1 class="text-white">Create User</h1>
          <?= $validation->listErrors() ?>
          <hr>
+         <div class="mb-3 row d-flex align-items-center">
+            <div class="col-1">
+               <label for="foto" class="form-label text-white fs-4">Foto</label>
+            </div>
+            <div class="col-11">
+               <input type="file" name="foto" id="foto" class="form-control <?= $validation->hasError('foto') ? 'is-invalid' : '' ?>">
+            </div>
+         </div>
          <div class="form-floating mb-3">
             <input type="text" class="form-control <?= $validation->hasError('nama') ? 'is-invalid' : '' ?>" name="nama" value="<?= old('nama') ?>" id="nama" placeholder="Nama Lengkap">
             <label for="floatingInput">Nama lengkap</label>
